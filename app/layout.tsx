@@ -64,7 +64,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={[inter.variable, calSans.variable].join(" ")}>
       <head>
-        <meta name="google-adsense-account" content="ca-pub-7208498496856218" />
+        <meta name="google-adsense-account" content="ca-pub-1988332417674550" />
       </head>
       <body
         className={`bg-black ${process.env.NODE_ENV === "development" ? "debug-screens" : undefined
