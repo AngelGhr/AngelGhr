@@ -10,21 +10,20 @@ export const metadata: Metadata = {
     default: 'AngelGhr',
     template: '%s | AngelGhr',
   },
-  description: 'Co-founder of unkey.dev and founder of planetfall.io',
+  description: 'Small platform to display personal projects, tools and 3D models.',
   openGraph: {
     title: 'AngelGhr',
-    description:
-      'Co-founder of unkey.dev and founder of planetfall.io',
+    description: 'Small platform to display personal projects, tools and 3D models.',
     url: 'https://angelghr.de',
     siteName: 'AngelGhr',
     images: [
       {
         url: 'https://angelghr.de/og.png',
-        width: 1920,
-        height: 1080,
+        width: 1200,
+        height: 630,
       },
     ],
-    locale: 'en-US',
+    locale: 'en-UK',
     type: 'website',
   },
   robots: {
@@ -64,6 +63,7 @@ export default function RootLayout({
   return (
     <html lang='en' className={[inter.variable, calSans.variable].join(' ')}>
       <head>
+        <script src="https://cookiechimp.com/widget/ZpMtZPM.js"></script>
         <meta name='google-adsense-account' content='ca-pub-1988332417674550' />
         <script async src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1988332417674550'
      crossOrigin='anonymous'></script>
