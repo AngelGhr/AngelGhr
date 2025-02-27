@@ -1,4 +1,4 @@
-import '../global.css'
+import '@root/global.css'
 import { Inter } from '@next/font/google'
 import LocalFont from '@next/font/local'
 import { Metadata } from 'next'
@@ -45,6 +45,7 @@ export const metadata: Metadata = {
     shortcut: '/favicon.png',
   },
 }
+
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
@@ -55,23 +56,19 @@ const calSans = LocalFont({
   variable: '--font-calsans',
 })
 
-export default function RootLayout({
-  children,
-}: {
+interface RootLayoutProps {
   children: React.ReactNode
-}) {
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang='en' className={[inter.variable, calSans.variable].join(' ')}>
       <head>
         <script src="https://cookiechimp.com/widget/ZpMtZPM.js"></script>
         <meta name='google-adsense-account' content='ca-pub-1988332417674550' />
-        <script async src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1988332417674550'
-     crossOrigin='anonymous'></script>
+        <script async src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1988332417674550' crossOrigin='anonymous' />
       </head>
-      <body
-        className={`bg-black ${process.env.NODE_ENV === 'development' ? 'debug-screens' : undefined
-          }`}
-      >
+      <body className='bg-black'>
         {children}
         <Analytics />
         <SpeedInsights />
