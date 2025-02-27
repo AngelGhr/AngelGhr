@@ -10,10 +10,10 @@ export const metadata: Metadata = {
     default: 'AngelGhr',
     template: '%s | AngelGhr',
   },
-  description: 'Small platform to display personal projects, tools and 3D models.',
+  description: 'Small platform to display personal projects, tools, games and 3D models.',
   openGraph: {
     title: 'AngelGhr',
-    description: 'Small platform to display personal projects, tools and 3D models.',
+    description: 'Small platform to display personal projects, tools, games and 3D models.',
     url: 'https://angelghr.de',
     siteName: 'AngelGhr',
     images: [
