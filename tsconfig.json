@@ -22,9 +22,7 @@
     "baseUrl": ".",
     "paths": {
       "@root/*": ["./*"],
-      "@components/*": ["./app/components/*"],
-      "contentlayer/generated": ["./.contentlayer/generated"]  
-
+      "@components/*": ["./app/components/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

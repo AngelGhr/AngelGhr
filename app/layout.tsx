@@ -1,6 +1,6 @@
 import '@root/global.css'
-import { Inter } from '@next/font/google'
-import LocalFont from '@next/font/local'
+import { Inter } from 'next/font/google'
+import LocalFont from 'next/font/local'
 import { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
@@ -65,8 +65,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang='en' className={[inter.variable, calSans.variable].join(' ')}>
       <head>
         <script src="https://cookiechimp.com/widget/ZpMtZPM.js"></script>
-        <meta name='google-adsense-account' content='ca-pub-1988332417674550' />
-        <script async src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1988332417674550' crossOrigin='anonymous' />
+        <meta name='google-adsense-account' content={process.env.GOOGLE_ADS_CLIENT_ID} />
+        <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.GOOGLE_ADS_CLIENT_ID}`} crossOrigin='anonymous' />
       </head>
       <body className='bg-black'>
         {children}
