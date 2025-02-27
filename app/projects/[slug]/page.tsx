@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { allProjects } from "contentlayer/generated";
-import { Mdx } from "@/app/components/mdx";
+import { Mdx } from "@components/mdx";
 import { Header } from "./header";
 import { ReportView } from "./view";
 import { Redis } from "@upstash/redis";
