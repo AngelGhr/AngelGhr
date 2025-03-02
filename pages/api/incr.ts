@@ -42,6 +42,7 @@ export default async function incr(req: NextRequest): Promise<NextResponse> {
       new NextResponse(null, { status: 202 });
     }
   }
-  await redis.incr(["pageviews", "tools", slug].join(":"));
+
+  await redis.incr(`pageviews:${body.category}:${slug}`);
   return new NextResponse(null, { status: 202 });
 }
