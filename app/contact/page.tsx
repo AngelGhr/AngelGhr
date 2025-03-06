@@ -1,50 +1,11 @@
 'use client'
 import Link from 'next/link'
-import { Navigation } from '@components/nav'
+import Navigation from '@root/app/components/nav'
 import { Card } from '@components/card'
 import Image from 'next/image'
-import Footer from '@components/footer'
+import Footer, { socials } from '@components/footer'
 
-const socials = [
-	{
-		icon: 'instagram.svg',
-		href: 'https://instagram.com/AngelGhr',
-		label: 'Instagram',
-		handle: '@AngelGhr',
-	},
-	{
-		icon: 'tiktok.svg',
-		href: 'https://tiktok.com/@angelghrmx',
-		label: 'TikTok',
-		handle: '@AngelGhrMx',
-	},
-	{
-		icon: 'facebook.svg',
-		href: 'https://facebook.com/AngelGhr',
-		label: 'Facebook',
-		handle: '/AngelGhr',
-	},
-	{
-		icon: 'linkedin.svg',
-		href: 'https://www.linkedin.com/in/angelghr',
-		label: 'LinkedIn',
-		handle: '/angelghr',
-	},
-	{
-		icon: 'youtube.svg',
-		href: 'https://youtube.com/@AngelGhrMx',
-		label: 'YouTube',
-		handle: '@AngelGhrMx',
-	},
-	{
-		icon: 'buymeacoffee.svg',
-		href: 'https://www.buymeacoffee.com/AngelGhr',
-		label: 'Buy me a coffee',
-		handle: '@AngelGhr',
-	}
-]
-
-export default function Example() {
+export default function ContactPage() {
 	return (
 		<div className=' bg-gradient-to-tl from-zinc-900/0 via-zinc-900 to-zinc-900/0'>
 			<Navigation />

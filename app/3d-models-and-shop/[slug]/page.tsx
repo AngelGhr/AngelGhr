@@ -1,7 +1,8 @@
 import { ContentModel, ContentModels } from '@root/types/redisContent'
-import { Header } from './header'
+import ArticleHeader from '@components/articleHeader'
 import ReportView from '@apis/view'
 import { Redis } from '@upstash/redis'
+import Navigation from '@components/nav'
 
 export const revalidate = 60
 
@@ -31,7 +32,8 @@ export default async function PostPage({ params }: Props) {
 
   return (
     <div className='bg-zinc-50 min-h-screen'>
-      <Header tool={currentModel} views={views} />
+      <Navigation views={views} backPath='3d-models-and-shop' />
+      <ArticleHeader tool={currentModel} />
       <ReportView slug={currentModel.slug} category='models' />
 
       <article className='px-4 py-12 mx-auto prose prose-zinc prose-quoteless'>
