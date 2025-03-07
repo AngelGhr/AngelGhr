@@ -3,19 +3,18 @@ import ArticleHeader from '@components/articleHeader'
 import ReportView from '@apis/view'
 import { Redis } from '@upstash/redis'
 import Navigation from '@components/nav'
+import React from 'react'
 
 export const revalidate = 60
 
 type Props = {
-  params: {
-    slug: string
-  }
+  params: Promise<any>
 }
 
 const redis = Redis.fromEnv()
 
 export default async function PostPage({ params }: Props) {
-  const { slug } = await params
+  const slug = await params.then(params => params.slug)
   const availableTools: ContentTools | null = await redis.json.get('tools')
 
   if (!availableTools) {

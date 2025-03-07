@@ -7,15 +7,13 @@ import Navigation from '@components/nav'
 export const revalidate = 60
 
 type Props = {
-  params: {
-    slug: string
-  }
+  params: Promise<any>
 }
 
 const redis = Redis.fromEnv()
 
 export default async function PostPage({ params }: Props) {
-  const slug = params?.slug
+  const slug = await params.then(params => params.slug)
   const availableModels: ContentModels | null = await redis.json.get('models')
 
   if (!availableModels) {
