@@ -37,7 +37,6 @@ export default async function PostPage({ params }: Props) {
       <ReportView slug={currentModel.slug} category='models' />
 
       <article className='px-4 py-12 mx-auto prose prose-zinc prose-quoteless'>
-        {currentModel.description}
       </article>
     </div>
   )

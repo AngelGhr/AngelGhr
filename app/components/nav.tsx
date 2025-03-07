@@ -37,7 +37,7 @@ export default function Navigation({ views, backPath }: NavigationProps) {
 			)}>
 				<div className='container flex flex-row-reverse items-center justify-between p-6 mx-auto'>
 					<div className='flex justify-between gap-8'>
-						{navLinks.map((link) => <Link href={link.link} className='duration-200 text-zinc-400 hover:text-zinc-100'>{link.name}</Link>)}
+						{navLinks.map((link, index) => <Link key={index} href={link.link} className='duration-200 text-zinc-400 hover:text-zinc-100'>{link.name}</Link>)}
 
 						{views && <span
 							title="View counter for this page"

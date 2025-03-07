@@ -1,3 +1,4 @@
+@import url('https://fonts.cdnfonts.com/css/pokemon-solid');
 @import "tailwindcss";
 
 @theme {
@@ -23,6 +24,9 @@
   --animate-title: title 3s ease-out forwards;
   --animate-fade-left: fade-left 3s ease-in-out forwards;
   --animate-fade-right: fade-right 3s ease-in-out forwards;
+
+  --font-secular: "Secular One", sans-serif;
+  --font-pokemon: "Pokemon Solid", sans-serif;
 
   @keyframes fade-in {
     0% {
@@ -84,6 +88,34 @@
 @layer base {
   .text-edge-outline {
     -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+  }
+
+  .font-pokemon {
+    letter-spacing: 0.25rem;
+    text-shadow: 2px 2px 0 #3c5aa6,
+    -2px 2px 0 #3c5aa6,
+    2px -2px 0 #3c5aa6,
+    -2px -2px 0 #3c5aa6,
+    0px 2px 0 #3c5aa6,
+    0px -2px 0 #3c5aa6,
+    -2px 0px 0 #3c5aa6,
+    2px 0px 0 #3c5aa6,
+    4px 4px 0 #3c5aa6,
+    -2px 4px 0 #3c5aa6,
+    4px -2px 0 #3c5aa6,
+    -4px -4px 0 #3c5aa6,
+    0px 4px 0 #3c5aa6,
+    0px -4px 0 #3c5aa6,
+    -4px 0px 0 #3c5aa6,
+    4px 0px 0 #3c5aa6,
+    2px 4px 0 #3c5aa6,
+    -2px 4px 0 #3c5aa6,
+    2px -4px 0 #3c5aa6,
+    -2px -4px 0 #3c5aa6,
+    4px 2px 0 #3c5aa6,
+    -4px 2px 0 #3c5aa6,
+    4px -2px 0 #3c5aa6,
+    -4px -2px 0 #3c5aa6;
   }
 }
 

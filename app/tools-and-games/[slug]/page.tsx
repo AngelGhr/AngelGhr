@@ -15,7 +15,7 @@ type Props = {
 const redis = Redis.fromEnv()
 
 export default async function PostPage({ params }: Props) {
-  const slug = params?.slug
+  const { slug } = await params
   const availableTools: ContentTools | null = await redis.json.get('tools')
 
   if (!availableTools) {
@@ -30,6 +30,8 @@ export default async function PostPage({ params }: Props) {
 
   const views = await redis.get<number>(`pageviews:tools:${currentTool.id}`) ?? 0
 
+  const Component = await import(`../../components/${currentTool.component}/main.tsx`).then(component => component.default)
+
   return (
     <div className='bg-zinc-50 min-h-screen'>
       <Navigation views={views} backPath='tools-and-games' />
@@ -37,7 +39,7 @@ export default async function PostPage({ params }: Props) {
       <ReportView slug={currentTool.slug} category='tools' />
 
       <article className='px-4 py-12 mx-auto prose prose-zinc prose-quoteless'>
-        {currentTool.description}
+        {Component && <Component />}
       </article>
     </div>
   )

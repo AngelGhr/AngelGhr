@@ -7,6 +7,7 @@ export interface ContentTool {
     title: string
     published: boolean
     description: string
+    component: string
 }
 
 export interface ContentModels extends Array<ContentModel>{}
