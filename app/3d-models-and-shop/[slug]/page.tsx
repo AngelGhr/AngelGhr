@@ -32,7 +32,7 @@ export default async function PostPage({ params }: Props) {
     <div className='bg-zinc-50 min-h-screen'>
       <Navigation views={views} backPath='3d-models-and-shop' />
       <ArticleHeader tool={currentModel} />
-      <ReportView slug={currentModel.slug} category='models' />
+      <ReportView id={currentModel.id} category='models' />
 
       <article className='px-4 py-12 mx-auto prose prose-zinc prose-quoteless'>
       </article>

@@ -35,7 +35,7 @@ export default async function PostPage({ params }: Props) {
     <div className='bg-zinc-50 min-h-screen'>
       <Navigation views={views} backPath='tools-and-games' />
       <ArticleHeader tool={currentTool} />
-      <ReportView slug={currentTool.slug} category='tools' />
+      <ReportView id={currentTool.id} category='tools' />
 
       <article className='px-4 py-12 mx-auto prose prose-zinc prose-quoteless'>
         {Component && <Component />}

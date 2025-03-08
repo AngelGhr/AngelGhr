@@ -15,12 +15,12 @@ export default async function incr(req: NextRequest): Promise<NextResponse> {
   }
 
   const body = await req.json();
-  let slug: string | undefined = undefined;
-  if ("slug" in body) {
-    slug = body.slug;
+  let id: string | undefined = undefined;
+  if ("id" in body) {
+    id = body.id;
   }
-  if (!slug) {
-    return new NextResponse("Slug not found", { status: 400 });
+  if (!id) {
+    return new NextResponse("Page ID not found", { status: 400 });
   }
   const ip = body.ip;
   if (ip) {
@@ -34,7 +34,7 @@ export default async function incr(req: NextRequest): Promise<NextResponse> {
       .join("");
 
     // deduplicate the ip for each slug
-    const isNew = await redis.set(["deduplicate", hash, slug].join(":"), true, {
+    const isNew = await redis.set(`deduplicate:hash:${id}`, true, {
       nx: true,
       ex: 24 * 60 * 60,
     });
@@ -43,6 +43,6 @@ export default async function incr(req: NextRequest): Promise<NextResponse> {
     }
   }
 
-  await redis.incr(`pageviews:${body.category}:${slug}`);
+  await redis.incr(`pageviews:${body.category}:${id}`);
   return new NextResponse(null, { status: 202 });
 }
