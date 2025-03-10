@@ -20,4 +20,8 @@ export interface ContentModel {
     published: boolean
     description: string
     has360: boolean
+    links?: {
+        etsy?: string
+        ebay?: string
+    }
 }

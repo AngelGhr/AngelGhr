@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import { Eye } from 'lucide-react'
 import { ContentModel } from '@root/types/redisContent'
+import Image from 'next/image'
 
 type Props = {
 	model: ContentModel
@@ -23,15 +23,12 @@ export const Article: React.FC<Props> = ({ model, views }) => {
 							<span>SOON</span>
 						)}
 					</span>
-					<span className='text-zinc-500 text-xs  flex items-center gap-1'>
-						<Eye className='w-4 h-4' />{' '}
-						{Intl.NumberFormat('en-US', { notation: 'compact' }).format(views)}
+					<span className='text-zinc-500 text-xs flex items-center gap-1'>
+						<Image src='/icons/eye.svg' width={24} height={24} alt='View counter' title='View counter' /> {Intl.NumberFormat('en-US', { notation: 'compact' }).format(views)}
 					</span>
 				</div>
 				
-				{model.has360 && 
-					<img src={`https://angelghr.media/${model.id}/360/0001.png`} width={200} height={200} className='image-border' />
-				}
+				{model.has360 && <img src={`https://angelghr.media/${model.id}/360/0001.png`} width={200} height={200} className='image-border' />}
 
 				<h2 className='z-20 text-xl font-medium duration-1000 lg:text-3xl text-zinc-200 group-hover:text-white font-display'>
 					{model.title}

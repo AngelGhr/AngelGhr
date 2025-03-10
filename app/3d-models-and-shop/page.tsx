@@ -4,8 +4,8 @@ import Navigation from '@components/nav'
 import { Card } from '@components/card'
 import { Article } from './article'
 import { Redis } from '@upstash/redis'
-import { Eye } from 'lucide-react'
 import { ContentModels } from '@root/types/redisContent'
+import Image from 'next/image'
 
 const redis = Redis.fromEnv()
 
@@ -76,10 +76,7 @@ export default async function ModelsPage() {
                       )}
                     </div>
                     <span className='flex items-center gap-1 text-xs text-zinc-500'>
-                      <Eye className='w-4 h-4' />{' '}
-                      {Intl.NumberFormat('en-US', { notation: 'compact' }).format(
-                        views[featured.slug] ?? 0,
-                      )}
+                      <Image src='/icons/eye.svg' width={24} height={24} alt='View counter' title='View counter' /> {Intl.NumberFormat('en-US', { notation: 'compact' }).format(views[featured.slug] ?? 0)}
                     </span>
                   </div>
 

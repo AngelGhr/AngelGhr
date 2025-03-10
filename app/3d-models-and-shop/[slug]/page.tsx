@@ -2,7 +2,8 @@ import { ContentModel, ContentModels } from '@root/types/redisContent'
 import ReportView from '@apis/view'
 import { Redis } from '@upstash/redis'
 import Navigation from '@components/nav'
-import ModelHeader from '@root/app/components/modelHeader'
+import ModelContent from '@root/app/components/modelContent'
+import Footer from '@root/app/components/footer'
 
 export const revalidate = 60
 
@@ -29,13 +30,11 @@ export default async function PostPage({ params }: Props) {
   const views = await redis.get<number>(`pageviews:models:${currentModel.id}`) ?? 0
 
   return (
-    <div className='bg-zinc-50 min-h-screen'>
+    <div className='min-h-screen bg-gradient-to-tl from-black via-zinc-900 to-black'>
       <Navigation views={views} backPath='3d-models-and-shop' />
-      <ModelHeader model={currentModel} />
+      <ModelContent model={currentModel} />
+      <Footer />
       <ReportView id={currentModel.id} category='models' />
-
-      <article className='px-4 py-12 mx-auto prose prose-zinc prose-quoteless'>
-      </article>
     </div>
   )
 }
