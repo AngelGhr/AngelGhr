@@ -19,4 +19,5 @@ export interface ContentModel {
     title: string
     published: boolean
     description: string
+    has360: boolean
 }

@@ -90,6 +90,10 @@
     -webkit-text-stroke: 1px rgba(255,255,255,0.3);
   }
 
+  .image-border {
+    filter: drop-shadow(2px 2px 0px white) drop-shadow(-2px 2px 0px white) drop-shadow(2px -2px 0px white) drop-shadow(-2px -2px 0px white);
+  }
+
   .font-pokemon {
     letter-spacing: 0.25rem;
     text-shadow: 2px 2px 0 #3c5aa6,
