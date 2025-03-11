@@ -46,7 +46,10 @@ export default function Navigation({ views, backPath }: NavigationProps) {
 					</div>
 
 					<div className='md:hidden justify-between py-4 pl-4 cursor-pointer' onClick={() => setIsMenuOpen(!isMenuOpen)}>
-						<span className='block w-5 h-0.5 bg-zinc-400 relative before:block before:absolute before:w-5 before:h-0.5 before:top-[-6px] before:left-0 before:bg-zinc-400 after:block after:absolute after:w-5 after:h-0.5 after:bottom-[-6px] after:left-0 after:bg-zinc-400' />
+						<span className={twMerge(
+							'duration-300 before:duration-300 after:duration-300 block w-5 h-0.5 bg-zinc-400 relative before:block before:absolute before:w-5 before:h-0.5 before:top-[-6px] before:left-0 before:bg-zinc-400 after:block after:absolute after:w-5 after:h-0.5 after:bottom-[-6px] after:left-0 after:bg-zinc-400',
+							isMenuOpen && 'bg-transparent before:rotate-45 after:-rotate-45 before:top-0 after:bottom-0'
+						)} />
 					</div>
 
 					<Link	href={`/${backPath ?? ''}`} className='duration-200 text-zinc-300 hover:text-zinc-100'>
@@ -55,7 +58,7 @@ export default function Navigation({ views, backPath }: NavigationProps) {
 				</div>
 			</div>
 
-			<div className='md:hidden fixed z-60 absolute top-21 right-0 overflow-hidden'>
+			<div className={twMerge('md:hidden fixed z-60 absolute top-21 right-0 overflow-hidden duration-300 h-0', isMenuOpen && 'h-screen')}>
 				<div className={twMerge('bg-zinc-900/500 border-zinc-800 rounded-lg backdrop-blur-md duration-300', !isMenuOpen && 'translate-x-full')}>
 					<div className='flex flex-col justify-between gap-8 p-4 w-50'>
 						{navLinks.map((link, index) => <Link key={index} href={link.link} className='duration-200 text-zinc-400 hover:text-zinc-100 p-2'>{link.name}</Link>)}
