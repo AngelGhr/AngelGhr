@@ -3,6 +3,7 @@ import { ContentModel } from '@root/types/redisContent'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 type ModelContentProps = {
 	model: ContentModel
@@ -10,6 +11,7 @@ type ModelContentProps = {
 
 export default function ModelContent({ model }: ModelContentProps) {
 	const [currentImage, setCurrentImage] = useState<string>('0001')
+	const [activeImage, setActiveImage] = useState<number>(model.has360 ? 0 : 1)
 
 	setTimeout(() => {
 		const currentImageNumber = parseInt(currentImage)
@@ -28,7 +30,26 @@ export default function ModelContent({ model }: ModelContentProps) {
 							{model.description}
 						</p>
 
-						{model.has360 && <img src={`https://angelghr.media/${model.id}/360/${currentImage}.png`} width={300} height={300} className='image-border mt-4 inline-block' />}
+						{(model.has360 || (model.media && model.media.length > 0)) && (
+							<div className='mt-4 inline-block relative'>
+
+								{((model.has360 && activeImage > 0) || (!model.has360 && activeImage > 1)) && (
+									<div className='absolute top-1/2 -left-10 cursor-pointer' onClick={() => setActiveImage(activeImage-1)}><img src='/icons/left.svg' width={32} height={32} /></div>
+								)}
+
+								<div className='w-65 md:w-100 overflow-hidden rounded-lg relative'>
+									{model.has360 && <img src={`https://angelghr.media/${model.id}/360/${currentImage}.png`} width={400} height={400} className='image-border' />}
+
+									{model.media && model.media.length > 0 && model.media.map((media, index) => {
+										return <img key={index} src={`https://angelghr.media/${model.id}/gallery/${media}`} width={400} height={400} className={twMerge('absolute top-0 duration-300', activeImage <= index && 'translate-x-full')} />
+									})}
+								</div>
+
+								{model.media && model.media.length >= activeImage+1 && (
+									<div className='absolute top-1/2 -right-10 cursor-pointer' onClick={() => setActiveImage(activeImage+1)}><img src='/icons/right.svg' width={32} height={32} /></div>
+								)}
+							</div>
+						)}
 					</div>
 
 					{model.links && (

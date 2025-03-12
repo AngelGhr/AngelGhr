@@ -24,4 +24,5 @@ export interface ContentModel {
         etsy?: string
         ebay?: string
     }
+    media?: string[]
 }
