@@ -1,12 +1,9 @@
-import Link from 'next/link'
 import React from 'react'
 import Navigation from '@components/nav'
 import { Card } from '@components/card'
 import { Article } from './article'
 import { Redis } from '@upstash/redis'
 import { ContentModels } from '@root/types/redisContent'
-import Image from 'next/image'
-import ContactFormGeneral from '../components/contactForms/contactFormGeneral'
 
 const redis = Redis.fromEnv()
 
@@ -28,22 +25,9 @@ export default async function ModelsPage() {
     return acc
   }, {} as Record<string, number>)
 
-  const featured = availableModels.find((tool) => tool.slug === 'unkey')!
-  const top2 = availableModels.find((tool) => tool.slug === 'planetfall')!
-  const top3 = availableModels.find((tool) => tool.slug === 'highstorm')!
   const sorted = availableModels
     .filter((p) => p.published)
-    .filter(
-      (model) =>
-        model.slug !== featured?.slug &&
-        model.slug !== top2?.slug &&
-        model.slug !== top3?.slug,
-    )
-    .sort(
-      (a, b) =>
-        new Date(b.date ?? Number.POSITIVE_INFINITY).getTime() -
-        new Date(a.date ?? Number.POSITIVE_INFINITY).getTime(),
-    )
+    .sort((a, b) => new Date(b.date ?? Number.POSITIVE_INFINITY).getTime() - new Date(a.date ?? Number.POSITIVE_INFINITY).getTime())
 
   return (
     <div className='relative pb-16'>
@@ -60,33 +44,11 @@ export default async function ModelsPage() {
         <div className='w-full h-px bg-zinc-800' />
 
         <div className='grid grid-cols-2 gap-4 mx-auto lg:mx-0 md:grid-cols-3 lg:grid-cols-4'>
-          <div className='grid grid-cols-1 gap-4'>
-            {sorted
-              .filter((_, i) => i % 3 === 0)
-              .map((model) => (
-                <Card key={model.slug}>
-                  <Article model={model} views={views[model.slug] ?? 0} />
-                </Card>
-              ))}
-          </div>
-          <div className='grid grid-cols-1 gap-4'>
-            {sorted
-              .filter((_, i) => i % 3 === 1)
-              .map((model) => (
-                <Card key={model.slug}>
-                  <Article model={model} views={views[model.slug] ?? 0} />
-                </Card>
-              ))}
-          </div>
-          <div className='grid grid-cols-1 gap-4'>
-            {sorted
-              .filter((_, i) => i % 3 === 2)
-              .map((model) => (
-                <Card key={model.slug}>
-                  <Article model={model} views={views[model.slug] ?? 0} />
-                </Card>
-              ))}
-          </div>
+          {sorted.map((model) => (
+            <Card key={model.slug}>
+              <Article model={model} views={views[model.slug] ?? 0} />
+            </Card>
+          ))}
         </div>
       </div>
     </div>
