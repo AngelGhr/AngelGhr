@@ -3,7 +3,14 @@
 import Image from "next/image"
 import Link from "next/link"
 
-export const socials = [
+export interface Social {
+	icon: string
+	href: string
+	label: string
+	handle: string
+}
+
+export const socials: Social[] = [
 	{
 		icon: 'instagram.svg',
 		href: 'https://instagram.com/AngelGhr',

@@ -36,8 +36,8 @@ export default function Navigation({ views, backPath }: NavigationProps) {
 				'fixed inset-x-0 top-0 z-50 backdrop-blur duration-200 border-b w-screen',
 				isIntersecting ? 'bg-zinc-900/0 border-transparent' : 'bg-zinc-900/500 border-zinc-800'
 			)}>
-				<div className='container flex flex-row-reverse items-center justify-between p-6 mx-auto'>
-					<div className='max-md:hidden flex justify-between gap-8'>
+				<div className='container flex flex-row-reverse items-center justify-between mx-auto px-6'>
+					<div className='max-md:hidden flex justify-between gap-8 py-6'>
 						{navLinks.map((link, index) => <Link key={index} href={link.link} className='duration-200 text-zinc-400 hover:text-zinc-100'>{link.name}</Link>)}
 
 						{views && <span	title='View counter for this page' className='duration-200 hover:font-medium flex items-center gap-1 text-zinc-400 hover:text-zinc-900'>
@@ -52,9 +52,15 @@ export default function Navigation({ views, backPath }: NavigationProps) {
 						)} />
 					</div>
 
-					<Link	href={`/${backPath ?? ''}`} className='duration-200 text-zinc-300 hover:text-zinc-100'>
-						<Image src='/icons/arrowleft.svg' width={24} height={24} alt='View counter' title='View counter' />
-					</Link>
+					<div className='flex gap-8'>
+						<Link	href={`/${backPath ?? ''}`} className='duration-200 text-zinc-300 hover:text-zinc-100 py-6'>
+							<Image src='/icons/arrowleft.svg' width={24} height={24} alt='View counter' title='View counter' />
+						</Link>
+
+						<Link	href='/' className='duration-200 text-zinc-300 hover:text-zinc-100 py-1'>
+							<Image src='/logo-angelghr.png' width={64} height={64} alt='View counter' title='View counter' />
+						</Link>
+					</div>
 				</div>
 			</div>
 
