@@ -25,4 +25,6 @@ export interface ContentModel {
         ebay?: string
     }
     media?: string[]
+    isComingSoon?: boolean
+    price?: number
 }

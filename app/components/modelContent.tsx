@@ -12,6 +12,7 @@ type ModelContentProps = {
 export default function ModelContent({ model }: ModelContentProps) {
 	const [currentImage, setCurrentImage] = useState<string>('0001')
 	const [activeImage, setActiveImage] = useState<number>(model.has360 ? 0 : 1)
+	const productPrice = model.price && model.price > 0 && new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(model.price)
 
 	setTimeout(() => {
 		const currentImageNumber = parseInt(currentImage)
@@ -50,6 +51,15 @@ export default function ModelContent({ model }: ModelContentProps) {
 								)}
 							</div>
 						)}
+					</div>
+
+					<div className='mx-auto max-w-2xl lg:mx-0 group'>
+						<h3 className='text-lg uppercase duration-1000 text-zinc-400 group-hover:text-zinc-200'>
+							Product Price
+						</h3>
+						<p className='text-5xl font-bold duration-1000 text-zinc-400 group-hover:text-zinc-200'>
+							{productPrice ?? 'X,XX €'} <span className='text-sm font-normal'>each</span>
+						</p>
 					</div>
 
 					{model.links && (
