@@ -62,6 +62,21 @@ export default function ModelContent({ model }: ModelContentProps) {
 						</p>
 					</div>
 
+					{model.longDescription && model.longDescription.length > 0 && (
+						<details className='mx-auto mt-10 max-w-2xl w-full border border-zinc-200 text-zinc-200 px-4 py-2 rounded-lg text-left'>
+							<summary className='cursor-pointer text-xl font-semibold'>Product Description</summary>
+							<ul className='list-disc list-inside mt-4'>
+								{model.longDescription.map((item, index) => {
+									const colonIndex = item.indexOf(':') + 1
+									const itemTitle = item.substring(0, colonIndex)
+									const itemDescription = item.substring(colonIndex)
+									
+									return <li key={index}>{itemTitle && <span className='font-semibold'>{itemTitle}</span>}{itemDescription}</li>
+								})}
+							</ul>
+						</details>
+					)}
+
 					{model.links && (
 						<div className='mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none'>
 							<div className='grid grid-cols-1 gap-y-6 gap-x-8 text-base font-semibold leading-7 text-white sm:grid-cols-2 md:flex lg:gap-x-10'>
