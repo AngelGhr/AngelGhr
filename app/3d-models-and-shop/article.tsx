@@ -44,7 +44,7 @@ export const Article: React.FC<Props> = ({ model, views }) => {
 					{model.title}
 				</h2>
 				<p className='z-20 mt-2 text-sm duration-1000 text-zinc-400 group-hover:text-zinc-200'>
-					{model.description}
+					{model.shortDescription}
 				</p>
 
 				<p className='z-20 absolute bottom-4 md:bottom-8 text-lg font-bold duration-1000 text-zinc-400 group-hover:text-zinc-200'>

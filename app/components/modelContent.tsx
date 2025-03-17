@@ -28,7 +28,7 @@ export default function ModelContent({ model }: ModelContentProps) {
 							{model.title}
 						</h1>
 						<p className='mt-6 text-lg leading-8 text-zinc-300'>
-							{model.description}
+							{model.shortDescription}
 						</p>
 
 						{(model.has360 || (model.media && model.media.length > 0)) && (

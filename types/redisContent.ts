@@ -18,7 +18,8 @@ export interface ContentModel {
     date: string
     title: string
     published: boolean
-    description: string
+    shortDescription: string
+    longDescription?: string[]
     has360: boolean
     links?: {
         etsy?: string
