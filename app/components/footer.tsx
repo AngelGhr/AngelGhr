@@ -1,7 +1,9 @@
 'use client'
 
-import Image from "next/image"
-import Link from "next/link"
+import Image from 'next/image'
+import Link from 'next/link'
+import { useState } from 'react'
+import ContactForm, { Subjects } from '@components/contactForms/contactFormHandler'
 
 export interface Social {
 	icon: string
@@ -50,10 +52,21 @@ export const socials: Social[] = [
 ]
 
 export default function Footer() {
+	const [ isBugReportOpen, setIsBugReportOpen ] = useState<boolean>(false)
+
 	return (
 		<footer className='mt-8 container flex max-md:flex-col items-center gap-8 p-6 mx-auto text-center'>
-			<p className='duration-200 text-zinc-400 hover:text-zinc-100'>
-				{`AngelGhr ${new Date().getFullYear()} - Made with 💝 by Angel Garza.`}
+			<p className='text-zinc-400'>
+				{`AngelGhr ${new Date().getFullYear()} - Made with 💝 by Angel Garza | `}
+				<Link
+					onClick={(event) => {
+						event.preventDefault()
+						setIsBugReportOpen(true)
+					}}
+					href='#'
+					className='duration-200 text-zinc-400 hover:text-zinc-100'>
+					Report a Bug 🐛
+				</Link>
 			</p>
 			<div className='flex-1 flex gap-2 justify-end'>
 				{socials.map((social, index) => (
@@ -62,6 +75,7 @@ export default function Footer() {
 					</Link>
 				))}
 			</div>
+			<ContactForm formType={Subjects.Bug} isOpen={isBugReportOpen} setIsContactFormOpen={setIsBugReportOpen} />
 		</footer>
 	)
 }

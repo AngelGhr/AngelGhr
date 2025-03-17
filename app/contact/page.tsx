@@ -5,7 +5,7 @@ import Navigation from '@root/app/components/nav'
 import { Card } from '@components/card'
 import Image from 'next/image'
 import Footer, { Social, socials } from '@components/footer'
-import ContactForm from '@components/contactForms/contactFormHandler'
+import ContactForm, { Subjects } from '@components/contactForms/contactFormHandler'
 import { useState } from 'react'
 
 const ContactCard = (social: Social, index?: number) => {
@@ -63,7 +63,7 @@ export default function ContactPage() {
 				</div>
 			</div>
 			<Footer />
-			<ContactForm formType='General' isOpen={isContactFormOpen} setIsContactFormOpen={setIsContactFormOpen} />
+			<ContactForm formType={Subjects.General} isOpen={isContactFormOpen} setIsContactFormOpen={setIsContactFormOpen} />
 		</div>
 	)
 }
