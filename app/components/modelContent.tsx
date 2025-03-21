@@ -42,7 +42,7 @@ export default function ModelContent({ model }: ModelContentProps) {
 									{model.has360 && <img src={`https://angelghr.media/${model.id}/360/${currentImage}.png`} width={400} height={400} className='image-border' />}
 
 									{model.media && model.media.length > 0 && model.media.map((media, index) => {
-										return <img key={index} src={`https://angelghr.media/${model.id}/gallery/${media}`} width={400} height={400} className={twMerge('absolute top-0 duration-300', activeImage <= index && 'translate-x-full')} />
+										return <img key={index} src={`https://angelghr.media/${model.id}/gallery/${media}`} width={400} height={400} className={twMerge('absolute top-0 duration-300', activeImage <= index && 'translate-x-[120%]')} />
 									})}
 								</div>
 
@@ -53,7 +53,7 @@ export default function ModelContent({ model }: ModelContentProps) {
 						)}
 					</div>
 
-					<div className='mx-auto max-w-2xl lg:mx-0 group'>
+					<div className='mx-auto max-w-2xl lg:mx-0 group mt-4'>
 						<h3 className='text-lg uppercase duration-1000 text-zinc-400 group-hover:text-zinc-200'>
 							Product Price
 						</h3>
