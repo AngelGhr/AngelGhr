@@ -64,7 +64,7 @@ export default function Navigation({ views, backPath }: NavigationProps) {
 				</div>
 			</div>
 
-			<div className={twMerge('md:hidden fixed z-60 absolute top-21 right-0 overflow-hidden duration-300 h-0', isMenuOpen && 'h-screen')}>
+			<div className={twMerge('md:hidden fixed z-60 top-18 right-0 overflow-hidden duration-300 h-0', isMenuOpen && 'h-screen')}>
 				<div className={twMerge('bg-zinc-900/500 border-zinc-800 rounded-lg backdrop-blur-md duration-300', !isMenuOpen && 'translate-x-full')}>
 					<div className='flex flex-col justify-between gap-8 p-4 w-50'>
 						{navLinks.map((link, index) => <Link key={index} href={link.link} className='duration-200 text-zinc-400 hover:text-zinc-100 p-2'>{link.name}</Link>)}
