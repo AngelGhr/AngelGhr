@@ -5,14 +5,16 @@ import Link from 'next/link'
 import { useRef, useState } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 import { twMerge } from 'tailwind-merge'
+import { FormContent } from './contactFormHandler'
 
 const EMAIL = 'hey@angelghr.de'
 
 interface ContactFormGeneralProps {
   subject: string
+  description?: string
 }
 
-export default function ContactFormGeneral({ subject }: ContactFormGeneralProps) {
+export default function ContactFormGeneral({ subject, description }: ContactFormGeneralProps) {
   const recaptchaRef = useRef<ReCAPTCHA>(null)
 	const [hasError, setHasError] = useState<boolean>(false)
   const [isVerified, setIsVerified] = useState<boolean>(false)
@@ -59,13 +61,17 @@ export default function ContactFormGeneral({ subject }: ContactFormGeneralProps)
 				onExpired={handleExpired}
 				className='flex justify-center'
 			/>
+      <p className='w-full max-w-80 my-4 text-white text-center'>{description}</p>
 			<Link
 				className={twMerge(
           'bg-transparent px-8 py-2 border border-zinc-200 text-zinc-200 rounded-lg mt-4',
           !isButtonEnabled && 'opacity-20 cursor-not-allowed'
         )}
 				type='submit'
-				href={isButtonEnabled ? `mailto:${EMAIL}?subject=${subject}` : '#'}
+				href={isButtonEnabled
+          ? `mailto:${EMAIL}?subject=${subject}${subject === FormContent.Personalise.Subject ? `&body=Reference: ${window.location.pathname}` : ''}`
+          : '#'
+        }
 			>
 				Send Email!
         {isLoading && <Image className='ml-2 inline-block animate-spin' src='/icons/loader.svg' width={20} height={20} alt='Loader' title='Loader' />}

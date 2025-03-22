@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
-import ContactForm, { Subjects } from '@components/contactForms/contactFormHandler'
+import ContactForm, { FormContent } from '@components/contactForms/contactFormHandler'
 
 export interface Social {
 	icon: string
@@ -75,7 +75,7 @@ export default function Footer() {
 					</Link>
 				))}
 			</div>
-			<ContactForm formType={Subjects.Bug} isOpen={isBugReportOpen} setIsContactFormOpen={setIsBugReportOpen} />
+			<ContactForm formContent={FormContent.Bug} isOpen={isBugReportOpen} setIsContactFormOpen={setIsBugReportOpen} />
 		</footer>
 	)
 }
