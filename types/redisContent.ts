@@ -10,6 +10,16 @@ export interface ContentTool {
     component: string
 }
 
+export interface ContentTutorials extends Array<ContentTutorial>{}
+
+export interface ContentTutorial {
+    id: string
+    slug: string
+    date: string
+    title: string
+    media: string
+}
+
 export interface ContentModels extends Array<ContentModel>{}
 
 export interface ContentModel {
