@@ -7,6 +7,7 @@ import { twMerge } from 'tailwind-merge'
 export const navLinks = [
 	{ link: '/tools-and-games', name: 'Tools & Games' },
 	{ link: '/3d-models-and-shop', name: '3D Models & Shop' },
+  { link: '/tutorials', name: 'Tutorials' },
 	{ link: '/contact', name: 'Contact' }
 ]
 

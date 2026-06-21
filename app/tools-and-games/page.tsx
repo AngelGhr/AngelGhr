@@ -1,4 +1,3 @@
-import React from 'react'
 import Navigation from '@components/nav'
 import { Card } from '@components/card'
 import { Article } from './article'
@@ -14,7 +13,7 @@ export default async function ToolsPage() {
   const contentNameToGet = `${previewSubdomain}tools`
   const availableTools: ContentTools | null = await redis.json.get(contentNameToGet)
 
-  if (!availableTools) {
+  if (!availableTools || availableTools.length <= 0) {
     return null
   }
 
