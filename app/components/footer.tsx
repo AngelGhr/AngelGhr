@@ -44,6 +44,12 @@ export const socials: Social[] = [
 		handle: '@AngelGhrMx',
 	},
 	{
+		icon: 'github.svg',
+		href: 'https://github.com/AngelGhr',
+		label: 'GitHub',
+		handle: 'AngelGhr',
+	},
+	{
 		icon: 'buymeacoffee.svg',
 		href: 'https://www.buymeacoffee.com/AngelGhr',
 		label: 'Buy me a coffee',
