@@ -13,7 +13,7 @@ type ArticleProps = {
 export default function Article({ tutorial, views }: ArticleProps) {
 	return <Link
 		href={tutorial.slug}
-		onClick={async (event) => {
+		onClick={async () => {
 			await ReportView({ id: tutorial.id, category: 'tutorials'})
 		}}
 	>
