@@ -6,18 +6,10 @@ import { ContentTutorials } from '@root/types/redisContent'
 
 const redis = Redis.fromEnv()
 
-type TutorialsPageProps = {
-  availableTutorials: ContentTutorials
-}
-
-export const getServerSideProps = (async () => {
+export default async function TutorialsPage() {
   const availableTutorials: ContentTutorials | null = await redis.json.get('tutorials')
 
-  return { props: { availableTutorials } }
-})
-
-export default async function TutorialsPage({ availableTutorials }: TutorialsPageProps) {
-  if (!availableTutorials || availableTutorials.length <= 0) {
+  if (!availableTutorials) {
     return null
   }
 

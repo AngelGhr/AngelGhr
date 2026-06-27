@@ -1,4 +1,3 @@
-import React from 'react'
 import Navigation from '@components/nav'
 import { Card } from '@components/card'
 import { Article } from './article'
@@ -9,10 +8,7 @@ import Title from './title'
 const redis = Redis.fromEnv()
 
 export default async function ModelsPage() {
-  const isPreview = process.env.PREVIEW_DOMAIN
-  const previewSubdomain = isPreview ? `${isPreview}:` : ''
-  const contentNameToGet = `${previewSubdomain}models`
-  const availableModels: ContentModels | null = await redis.json.get(contentNameToGet)
+  const availableModels: ContentModels | null = await redis.json.get('models')
 
   if (!availableModels) {
     return null
